@@ -5,6 +5,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 use App\Services\OtxService;
 use Illuminate\Http\Request;
+use App\Models\Malwarefamily;
+use App\Models\Indicator;
 
 class OtxController extends Controller
 {
@@ -41,11 +43,15 @@ class OtxController extends Controller
             }
             
             $categorizedIOCs = $this->categorizeIOCs($pulseDetails['indicators']);
+
+            // merge the data after present it 
             $iocResults = array_merge_recursive($iocResults, $categorizedIOCs);
         }
+        // store the result in DB
+        $mal_id = $this->store_Malware_Indicators($query, $categorizedIOCs,$source);
         // dd($pulses['results']);
         //  dd($pulseDetails['indicators']);
-        return view('search-result', compact('iocResults', 'query', 'source'));
+        return view('search-result', compact('iocResults', 'query', 'source','mal_id'));
     }
 
     /**
@@ -139,6 +145,30 @@ class OtxController extends Controller
 //         'query' => request()->query(),
 //     ]);
 // }
+
+//storing the iocs in DB
+private function store_Malware_Indicators($familyName, $indicators,$source)
+{
+    // Find or create the malware family
+    $malwareFamily = Malwarefamily::firstOrCreate(
+        ['name' => $familyName],
+        ['description' => 'Description of ' . $familyName] // Adjust this as needed
+    );
+
+    // Categorize and store each IOC
+    foreach ($indicators as $type=>$iocs) {
+        foreach ($iocs as $ioc) {
+            $malwareFamily->indicators()->create([
+                'type' => $type,
+                'value' => $ioc,
+                'source' => $source,
+                // 'malwarefamily_id' => $malwareFamily->id,
+            ]);
+        }
+    }
+    return $malwareFamily->id;
+}
+////////////////////////////////////////////////
 private function categorizeIOCs2($indicators)
 {
     $categorizedIOCs = [];

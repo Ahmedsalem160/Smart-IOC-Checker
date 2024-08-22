@@ -33,7 +33,8 @@
 
 
           <!-- Table -->
-          <div class="w-full h-full mt-5">
+           <a href="{{route('export.indicators',$mal_id)}}" class="btn btn-primary">Export To ExcelSheet</a>
+        <div class="w-full h-full mt-5">
         <div class="container">
           <div class="tableContainer">
             <table class="table - mb-0">

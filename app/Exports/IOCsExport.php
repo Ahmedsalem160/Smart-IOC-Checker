@@ -7,9 +7,16 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class IOCsExport implements FromCollection, WithHeadings
 {
+    protected $malwareFamilyId;
+
+    public function __construct($malwareFamilyId)
+    {
+        $this->malwareFamilyId = $malwareFamilyId;
+    }
     public function collection()
     {   // will return the data from the indicator model that related with DB 
-        return Indicator::all(['type', 'value', 'source', 'created_at']);
+        return Indicator::where('malwarefamilies_id', $this->malwareFamilyId)
+        ->get(['type', 'value', 'source', 'created_at']);
     }
 
     public function headings(): array
