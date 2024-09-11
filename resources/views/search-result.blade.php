@@ -46,16 +46,15 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($iocResults as $type => $values)
-                    @foreach($values as $ioc)
-                    
+
+                    @foreach($all_ioc as $ioc)
                     <tr>
-                        <td style="text-align:center;">{{ ucfirst($type)}}</td>
-                        <td style="text-align:center;">{{ $ioc}}</td>
-                        <td style="text-align:center;">{{ $source }}</td>
+                        <td style="text-align:center;">{{ ucfirst($ioc->type)}}</td>
+                        <td style="text-align:center;">{{ $ioc->value}}</td>
+                        <td style="text-align:center;">{{ $ioc->source }}</td>
                     </tr>
                     @endforeach
-                @endforeach
+
               </tbody>
             </table>
           </div>

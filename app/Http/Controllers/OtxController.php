@@ -25,22 +25,23 @@ class OtxController extends Controller
     }
 
     public function handleSearch(Request $request)
-    {   $source = "AlienVault";
+    { 
+        $source = "AlienVault";
         $query = $request->input('query');
         //calling Alien Vault service
-        // $pulses = $this->otxService->searchPulses($query);
+        $pulses = $this->otxService->searchPulses($query);
         // Calling ThreatFox service
         $res_fox= $this->threatfoxService->search($query);
         // dd($res_fox);
-        $extract_iocs=[];
+        $fox_iocs=[];
         foreach($res_fox as $item){
-            $extract_iocs[] = [
+            $fox_iocs[] = [
                 'ioc' => $item['ioc'],
                 'ioc_type' => $item['ioc_type']
             ];
         }
-        $malware_id = $this->save_ioc_fox($query,$extract_iocs);
-        dd($malware_id);
+        // $malware_id = $this->save_ioc_fox($query,$extract_iocs);
+
         ////////////////////////////////////////////////////EnD ThreatFOX Integration
         if (isset($pulses['error']) && $pulses['error']) {
             return redirect()->back()->with('error', $pulses['message']);
@@ -63,11 +64,14 @@ class OtxController extends Controller
             // merge the data after present it 
             $iocResults = array_merge_recursive($iocResults, $categorizedIOCs);
         }
-        // store the result in DB
-        $mal_id = $this->store_Malware_Indicators($query, $categorizedIOCs,$source);
+        // store the result in DB   from threatfox, Alienvault
+        $mal_id = $this->store_Malware_Indicators($query, $categorizedIOCs,$fox_iocs);
         // dd($pulses['results']);
         //  dd($pulseDetails['indicators']);
-        return view('search-result', compact('iocResults', 'query', 'source','mal_id'));
+        $all_ioc = Indicator::where('malwarefamilies_id',$mal_id)->get();
+        
+        // return view('search-result', compact('iocResults', 'query', 'source','mal_id'));
+        return view('search-result', compact('all_ioc', 'query', 'source','mal_id'));
     }
 
     /**
@@ -163,16 +167,15 @@ class OtxController extends Controller
 // }
 
 //storing the iocs in DB   From AlienVault
-private function store_Malware_Indicators($familyName, $indicators)
+private function store_Malware_Indicators($familyName, $indicators, $iocs_fox)
 {
     // Find or create the malware family
     $malwareFamily = Malwarefamily::firstOrCreate(
         ['name' => $familyName],
         ['description' => 'Description of ' . $familyName], // Adjust this as needed
-        ['source'=>"AlienVault"]
     );
 
-    // Categorize and store each IOC
+    // Categorize and store each IOC  from alienvault
     foreach ($indicators as $type=>$iocs) {
         foreach ($iocs as $ioc) {
             $malwareFamily->indicators()->create([
@@ -182,6 +185,16 @@ private function store_Malware_Indicators($familyName, $indicators)
                 // 'malwarefamily_id' => $malwareFamily->id,
             ]);
         }
+    }
+    // Categorize and store each IOC  from Threatfox
+        
+    foreach ($iocs_fox as $ioc) {
+        $malwareFamily->indicators()->create([
+            'type' => $ioc["ioc_type"],
+            'value' => $ioc["ioc"],
+            'source' => "Threat Fox",
+            // 'malwarefamily_id' => $malwareFamily->id,
+        ]);
     }
     return $malwareFamily->id;
 }

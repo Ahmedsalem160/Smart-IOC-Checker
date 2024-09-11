@@ -20,13 +20,16 @@ class ThreatfoxService
     {
         try {
             // Prepare the request data
-            $response = Http::post($this->baseUrl, [
-                
-                    'query' => 'malwareinfo',
-                    'malware' => $malwareFamily
-                
-            ]);
-
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+            ])->post($this->baseUrl, [
+                'query' => 'malwareinfo',
+                'malware' => $malwareFamily //"cobalt strike" // Dynamically pass the malware family
+            ]);//dd($response);
+            // $response = Http::post($this->baseUrl, [
+            //         'query' => 'malwareinfo',
+            //         'malware' => "Cobalt Strike",//$malwareFamily
+            // ]);
             // Convert the response to JSON
             $data = json_decode($response->getBody()->getContents(), true);
 

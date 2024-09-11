@@ -40,7 +40,7 @@ class ReputationController extends Controller
                 $iocs = file($file->getRealPath(), FILE_IGNORE_NEW_LINES);
             } else {
                 $iocs = Excel::toArray(new IocImport, $file)[0];
-                $iocs = array_map('reset', $iocs); // Flatten array in case of multiple columns
+                $iocs = array_map('reset', $iocs);dd($iocs); // Flatten array in case of multiple columns
             }
         } elseif ($request->has('single_ioc')) {
             // Handle single IOC input
@@ -71,7 +71,7 @@ class ReputationController extends Controller
             ])->get($url);
             $data = $response->json();
 
-            dd($data);
+            // dd($data);
             if ($response->successful()) {
                 $data = $response->json();
                 $results[$ioc] = [
@@ -85,7 +85,7 @@ class ReputationController extends Controller
                 ];
             }
         }
-
+        dd($results);
         return view('reputation-result', compact('results'));
     }
 
