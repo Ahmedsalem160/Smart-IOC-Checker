@@ -5,7 +5,25 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\SweepController;
 use App\Http\Controllers\ReputationController;
 use Illuminate\Support\Facades\Route;
+################################## Auth Routes ##################################
+Route::get('/auth/login', function () {
+    return view('auth.login');
+})->name('custom-login');
 
+// Custom registration route
+Route::get('/auth/register', function () {
+    return view('auth.register');
+})->name('custom-register');
+
+// Custom password reset route
+Route::get('/auth/reset', function () {
+    return view('auth.reset');
+})->name('custom-reset');
+
+// Logout 
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+################################## End Auth Routes###############################
 Route::get('/', function () {
     return view('welcome');
 });

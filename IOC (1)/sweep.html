@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png" />
+    <title>IOC Checker</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="pb-5">
+      <div class="chevron-up" id="chevron-up">
+        <img src="assets/chevron.png" />
+      </div>
+      <div
+        id="toast-container"
+        style="position: fixed; top: 80px; right: 20px; z-index: 1040"
+      ></div>
+      <!-- Header -->
+      <nav class="navbar navbar-expand-xl bg-white shadow fixed-top">
+        <div class="container-fluid px-sm-5">
+          <!-- Logo -->
+          <a class="navbar-brand logo" href="/">
+            <img src="/assets/logo.png" />
+            <span></span>
+            <h1 class="font-weight-normal">IOC Checker</h1>
+          </a>
+          <!-- Side -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav"
+            aria-controls="nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Links -->
+          <div
+            class="collapse navbar-collapse justify-content-center mt-2 mt-xl-0"
+            id="nav"
+          >
+            <ul class="navbar-nav mb-2 mb-lg-0 justify-content-center">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="#"
+                  data-link="dashboard"
+                  >Dashboard</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/"
+                  data-link="home"
+                  >IOC Collection</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link isActive"
+                  aria-current="page"
+                  href="/sweep.html"
+                  data-link="network"
+                  >Network Sweep</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="#"
+                  data-link="blocking"
+                  >Blocking List</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/reports.html"
+                  data-link="reports"
+                  >Reports</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/check-reputation.html"
+                  data-link="account"
+                  >Check Reputation</a
+                >
+              </li>
+            </ul>
+            <div class="dropdown header-drop">
+              <a
+                class="btn dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="abb"> BR </span>
+                <span> Bassant </span>
+              </a>
+
+              <ul class="dropdown-menu user-dropdown">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <div class="user-name">
+                      <span class="abb"> BR </span>
+                      <span>Bassant Raafat</span>
+                    </div>
+                    <span>demo@gmail.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>
+                      <img src="/assets/password.png" />
+                    </span>
+                    <sapn>Change Password</sapn>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>
+                      <img src="/assets/logout.png" />
+                    </span>
+                    <sapn>Logout</sapn>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!--/ Header /-->
+      <!-- Hero Section -->
+      <div class="heroSection">
+        <div class="bgimage">
+          <img src="/assets/HeroSection.png" alt="image" />
+        </div>
+        <h3>Network Sweep</h3>
+      </div>
+      <!--/ Hero Section /-->
+      <!-- Search -->
+      <div class="d-flex justify-content-center container">
+        <div class="selectBox">
+          <div class="searchBox">
+            <div class="input-group border-none">
+              <!-- <button
+                class="btn btn-outline-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Scope
+              </button>
+              <ul class="dropdown-menu">
+                <li>Global Scope</li>
+                <li>Local Scope</li>
+              </ul>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Text input with dropdown button"
+              /> -->
+              <select
+                class="form-select"
+                placeholder="sese"
+                aria-label="select"
+              >
+                <option disabled selected>Select...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <button class="search bg-blue">
+            Start Sweep
+            <span
+              class="spinner-border spinner-border-sm mx-1 text-light"
+              role="status"
+            ></span>
+          </button>
+        </div>
+      </div>
+      <!--/ Search /-->
+      <!-- Table -->
+      <div class="w-full h-full mt-5">
+        <div class="container">
+          <div class="tableContainer">
+            <table class="table mb-0 table-ellipsis">
+              <thead class="text-capitalize">
+                <tr>
+                  <th scope="col">Computer Name</th>
+                  <th scope="col">Signed Account</th>
+                  <th scope="col">Ip</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    5c698edeba5260b1eb170c375015273324b86bae82722d85d2f013b22ae52d0c
+                  </td>
+                  <td>
+                    5c698edeba5260b1eb170c375015273324b86bae82722d85d2f013b22ae52d0c
+                  </td>
+                  <td>
+                    5c698edeba5260b1eb170c375015273324b86bae82722d85d2f013b22ae52d0c
+                  </td>
+                  <!-- if status == 0 -->
+                  <td class="status0">Bengin</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <!-- if status == 1 -->
+                  <td class="status1">
+                    <span>Compromised</span>
+                    <!-- on click open modal have status data -->
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#compromised"
+                      class="search bg-blue"
+                    >
+                      Show Details
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--/ Table /-->
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="compromised"
+        tabindex="-1"
+        aria-labelledby="compromised"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header px-5">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Compromised
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="tableContainer">
+                <table class="table mb-0 table-ellipsis">
+                  <thead class="text-capitalize">
+                    <tr>
+                      <th scope="col">Ips</th>
+                      <th scope="col" class="head-ellipsis">Hashes</th>
+                      <th scope="col">Domains</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ips</td>
+                      <td class="text-ellipsis">
+                        5c698edeba5260b1eb170c375015273324b86bae82722d85d2f013b22ae52d0c
+                      </td>
+                      <td>Domains</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-ellipsis"></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

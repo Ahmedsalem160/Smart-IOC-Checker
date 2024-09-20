@@ -21,15 +21,15 @@ class OtxController extends Controller
     }
     public function showSearchForm()
     {
-        return view('search');
+        return view('search2');
     }
 
     public function handleSearch(Request $request)
     { 
         $source = "AlienVault";
-        $query = $request->input('query');
+        $query = $request->input('query');//dd($query);
         //calling Alien Vault service
-        $pulses = $this->otxService->searchPulses($query);
+        $pulses = $this->otxService->searchPulses($query);//dd($pulses);
         // Calling ThreatFox service
         $res_fox= $this->threatfoxService->search($query);
         // dd($res_fox);
@@ -44,6 +44,7 @@ class OtxController extends Controller
 
         ////////////////////////////////////////////////////EnD ThreatFOX Integration
         if (isset($pulses['error']) && $pulses['error']) {
+            
             return redirect()->back()->with('error', $pulses['message']);
         }
 

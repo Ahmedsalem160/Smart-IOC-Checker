@@ -15,8 +15,15 @@
   </head>
   <body>
     <div class="pb-5">
+      <div class="chevron-up" id="chevron-up">
+        <img src="assets/chevron.png" />
+      </div>
+      <div
+        id="toast-container"
+        style="position: fixed; top: 80px; right: 20px; z-index: 1040"
+      ></div>
       <!-- Header -->
-      <nav class="navbar navbar-expand-xl navbar-expand-custom bg-white">
+      <nav class="navbar navbar-expand-xl bg-white shadow fixed-top">
         <div class="container-fluid px-sm-5">
           <!-- Logo -->
           <a class="navbar-brand logo" href="/">
@@ -54,7 +61,7 @@
 
               <li class="nav-item">
                 <a
-                  class="nav-link isActive"
+                  class="nav-link"
                   aria-current="page"
                   href="/"
                   data-link="home"
@@ -81,7 +88,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link"
+                  class="nav-link isActive"
                   aria-current="page"
                   href="/reports.html"
                   data-link="reports"
@@ -92,13 +99,52 @@
                 <a
                   class="nav-link"
                   aria-current="page"
-                  href="#"
+                  href="/check-reputation.html"
                   data-link="account"
-                  >Account Management</a
+                  >Check Reputation</a
                 >
               </li>
             </ul>
-            <button class="logout mb-1">Logout</button>
+            <div class="dropdown header-drop">
+              <a
+                class="btn dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="abb"> BR </span>
+                <span> Bassant </span>
+              </a>
+
+              <ul class="dropdown-menu user-dropdown">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <div class="user-name">
+                      <span class="abb"> BR </span>
+                      <span>Bassant Raafat</span>
+                    </div>
+                    <span>demo@gmail.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>
+                      <img src="/assets/password.png" />
+                    </span>
+                    <sapn>Change Password</sapn>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>
+                      <img src="/assets/logout.png" />
+                    </span>
+                    <sapn>Logout</sapn>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -108,7 +154,7 @@
         <div class="bgimage">
           <img src="/assets/HeroSection.png" alt="image" />
         </div>
-        <h3>IOC Collection</h3>
+        <h3>Reports</h3>
       </div>
       <!--/ Hero Section /-->
       <!-- Search -->
@@ -122,12 +168,12 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                All
+                Report Type
               </button>
               <ul class="dropdown-menu">
-                <li>Hash</li>
-                <li>Ip</li>
-                <li>Domain</li>
+                <li>Tax Report</li>
+                <li>Sale Report</li>
+                <li>Shift Report</li>
               </ul>
               <input
                 type="text"
@@ -136,120 +182,10 @@
               />
             </div>
           </div>
-          <button class="search bg-blue">Search</button>
+          <button class="search bg-red">Generate</button>
         </div>
       </div>
       <!--/ Search /-->
-      <!-- Table -->
-      <div class="w-full h-full mt-5">
-        <div class="container">
-          <div class="tableContainer">
-            <table class="table - mb-0">
-              <thead class="text-capitalize">
-                <tr>
-                  <th scope="col">Type</th>
-                  <th scope="col">Value</th>
-                  <th scope="col">Source</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!--/ Table /-->
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

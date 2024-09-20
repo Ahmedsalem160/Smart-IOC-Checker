@@ -19,9 +19,10 @@ class OtxService
     {
         $url = $this->baseUrl . '/pulses/subscribed?limit=10&q=' . urlencode($query);
         $response = Http::withHeaders([
-            'X-OTX-API-KEY' => $this->apiKey,
+            // 'Authorization' => 'Bearer ' . $this->apiKey,
+            'X-OTX-API-KEY' => "b7efce9f16804318e3d5915cce09e1809986863e7cca70bc4ecbb725f3f4e0a1"//$this->apiKey,
         ])->get($url);
-
+            
         if ($response->successful()) {
             return $response->json();
         }

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png" />
+    <title>IOC Checker</title>
+    <!-- Bootstrap  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-p1YjIJVzQhWzqJ2qPcAsO4RQ4FV9BlbFiRZ8xIqThYvZxV0T3MxJxJ1K0c5un6d0Nx+j+YlIK1ZK42V0Z+6amg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Style -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div class="pb-5 position-relative">
+      <div class="chevron-up" id="chevron-up">
+        <img src="assets/chevron.png" />
+      </div>
+      <div
+        id="toast-container"
+        style="position: fixed; top: 80px; right: 20px; z-index: 1040"
+      ></div>
+      <!-- Header -->
+      <nav class="navbar navbar-expand-xl bg-white shadow fixed-top">
+        <div class="container-fluid px-sm-5">
+          <!-- Logo -->
+          <a class="navbar-brand logo" href="/">
+            <img src="/assets/logo.png" />
+            <span></span>
+            <h1 class="font-weight-normal">IOC Checker</h1>
+          </a>
+          <!-- Side -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav"
+            aria-controls="nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Links -->
+          <div
+            class="collapse navbar-collapse justify-content-center mt-2 mt-xl-0"
+            id="nav"
+          >
+            <ul class="navbar-nav mb-2 mb-lg-0 justify-content-center">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="#"
+                  data-link="dashboard"
+                  >Dashboard</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/"
+                  data-link="home"
+                  >IOC Collection</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/sweep.html"
+                  data-link="network"
+                  >Network Sweep</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="#"
+                  data-link="blocking"
+                  >Blocking List</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/reports.html"
+                  data-link="reports"
+                  >Reports</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link isActive"
+                  aria-current="page"
+                  href="/check-reputation.html"
+                  data-link="account"
+                  >Check Reputation</a
+                >
+              </li>
+            </ul>
+            <div class="dropdown header-drop">
+              <a
+                class="btn dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="abb"> BR </span>
+                <span> Bassant </span>
+              </a>
+
+              <ul class="dropdown-menu user-dropdown">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <div class="user-name">
+                      <span class="abb"> BR </span>
+                      <span>Bassant Raafat</span>
+                    </div>
+                    <span>demo@gmail.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>
+                      <img src="/assets/password.png" />
+                    </span>
+                    <sapn>Change Password</sapn>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>
+                      <img src="/assets/logout.png" />
+                    </span>
+                    <sapn>Logout</sapn>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!--/ Header /-->
+      <!-- Hero Section -->
+      <div class="heroSection">
+        <div class="bgimage">
+          <img src="/assets/HeroSection.png" alt="image" />
+        </div>
+        <div class="waviy text-center">
+          <span style="--i: 1">C</span>
+          <span style="--i: 2">H</span>
+          <span style="--i: 3">E</span>
+          <span style="--i: 4">C</span>
+          <span style="--i: 5">K</span>
+          <span style="--i: 6"> </span>
+          <span style="--i: 7">R</span>
+          <span style="--i: 8">E</span>
+          <span style="--i: 9">P</span>
+          <span style="--i: 10">U</span>
+          <span style="--i: 11">T</span>
+          <span style="--i: 12">A</span>
+          <span style="--i: 13">T</span>
+          <span style="--i: 14">I</span>
+          <span style="--i: 15">O</span>
+          <span style="--i: 16">N</span>
+        </div>
+      </div>
+      <!--/ Hero Section /-->
+      <!-- Search -->
+      <div
+        class="d-flex justify-content-center container flex-column mx-auto w-fit"
+      >
+        <div class="selectBox mx-auto">
+          <div class="searchBox">
+            <div class="input-group border-none">
+              <input
+                id="searchInput"
+                placeholder="Search..."
+                type="text"
+                class="form-control"
+                aria-label="Text input with dropdown button"
+              />
+            </div>
+          </div>
+          <label for="upload-file" class="search upload-file">
+            <img src="/assets/file.png" />
+            Upload File
+            <input type="file" name="upload-file" id="upload-file" />
+          </label>
+          <button id="search" class="search bg-blue">
+            Search
+            <span
+              class="spinner-border spinner-border-sm mx-1 text-light"
+              role="status"
+            ></span>
+          </button>
+        </div>
+        <p class="mt-2">
+          <img src="/assets/attach-file.png" style="width: 22px" />
+          <span id="file-name">No file selected</span>
+        </p>
+      </div>
+      <!--/ Search /-->
+      <!-- Table -->
+
+      <div class="tab-container">
+        <h5>Search Value: the search value like hashs</h5>
+        <div class="tabs-scroll">
+          <div class="tabs">
+            <div class="tabby-tab">
+              <input type="radio" id="malicious" name="tabby-tabs" checked />
+              <label for="malicious"
+                >Malicious
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-blue z-3"
+                >
+                  19+
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </label>
+              <div class="tabby-content">
+                <p>
+                  Purr while eating meowing non stop for food or chase laser
+                  sleep on dog bed, force dog to sleep on floor, so play
+                  riveting piece on synthesizer keyboard hiss at vacuum cleaner.
+                  Stares at human while pushing stuff off a table spot
+                  something, big eyes, big eyes, crouch, shake butt, prepare to
+                  pounce so refuse to leave cardboard box.
+                </p>
+              </div>
+            </div>
+
+            <div class="tabby-tab">
+              <input type="radio" id="suspicious" name="tabby-tabs" />
+              <label for="suspicious"
+                >Suspicious
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-blue z-3"
+                >
+                  59+
+                  <span class="visually-hidden">unread messages</span>
+                </span></label
+              >
+              <div class="tabby-content">
+                <p>
+                  Cats go for world domination if it fits, i sits, meowwww but
+                  claw drapes, or sleep in the bathroom sink. Missing until
+                  dinner time under the bed, or eat from dog's food hide from
+                  vacuum cleaner kick up litter but lie on your belly and purr
+                  when you are asleep.
+                </p>
+              </div>
+            </div>
+
+            <div class="tabby-tab">
+              <input type="radio" id="undetected" name="tabby-tabs" />
+              <label for="undetected"
+                >Undetected
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-blue z-3"
+                >
+                  5+
+                  <span class="visually-hidden">unread messages</span>
+                </span></label
+              >
+              <div class="tabby-content">
+                <p>
+                  Throwup on your pillow wake up human for food at 4am and hide
+                  when guests come over, yet inspect anything brought into the
+                  house.
+                </p>
+              </div>
+            </div>
+
+            <div class="tabby-tab">
+              <input type="radio" id="harmless" name="tabby-tabs" />
+              <label for="harmless"
+                >Harmless
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-blue z-3"
+                >
+                  9+
+                  <span class="visually-hidden">unread messages</span>
+                </span></label
+              >
+              <div class="tabby-content">
+                <p>
+                  Use lap as chair love to play with owner's hair tie pooping
+                  rainbow while flying in a toasted bread costume in space. Run
+                  in circles loves cheeseburgers, nap all day kick up litter.
+                  Stick butt in face hide when guests come over.
+                </p>
+              </div>
+            </div>
+
+            <div class="tabby-tab">
+              <input type="radio" id="timeout" name="tabby-tabs" />
+              <label for="timeout"
+                >Timeout
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-blue z-3"
+                >
+                  33+
+                  <span class="visually-hidden">unread messages</span>
+                </span></label
+              >
+              <div class="tabby-content">
+                <p>
+                  Use lap as chair love to play with owner's hair tie pooping
+                  rainbow while flying in a toasted bread costume in space. Run
+                  in circles loves cheeseburgers, nap all day kick up litter.
+                  Stick butt in face hide when guests come over.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--/ Table /-->
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
